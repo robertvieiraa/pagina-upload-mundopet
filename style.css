@@ -63,7 +63,6 @@ nav > .lista-links {
 main {
     display: flex;
     gap: 20px;
-    width: 996px;
     background-color: var(--itens-background);
     margin-left: 20px;
     padding: 32px;
@@ -117,4 +116,93 @@ main {
     display: flex;
     gap: 8px;
     color: #888;
+}
+
+.container-informacoes {
+    color: var(--text-color);
+    border: 2px dotted red;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 40px;
+}
+
+form input, textarea {
+    background-color: var(--secondary-color);
+    width: 100%;
+    outline: none;
+    padding: 8px 16px;
+    margin-top: 8px;
+}
+
+form textarea {
+    height: 161px;
+}
+
+.tags {
+    display: flex;
+}
+
+.tags > li {
+    display: flex;
+    gap: 10px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: var(--secondary-color);
+    color: #000;
+    list-style-type: none;
+}
+
+.container-botoes {
+    display: flex;
+    gap: 10px;
+}
+
+.container-botoes button {
+    position: relative;
+    width: 50%;
+    border-radius: 8px;
+    padding: 12px 18px;
+    font-weight: bold;
+}
+
+.botao-descartar {
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.botao-descartar::after {
+    position: absolute;
+    content: "";
+    background-image: url('imagens/trash.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 15px;
+    height: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 8px;
+}
+
+.botao-publicar {
+    background-color: var(--primary-color);
+    border: none;
+    color: var(--background-color);
+}
+
+.botao-publicar::after {
+    position: absolute;
+    content: "";
+    background-image: url('imagens/arrow_forward.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 15px;
+    height: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 8px;
 }
