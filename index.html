@@ -39,6 +39,46 @@
             </ul>
         </nav>
     </aside>
+    <main>
+        <div class="container-upload-imagem">
+            <div class="container-imagem">
+                <img src="imagens/gato-laranja.jpg">
+            </div>
+            <input type="file" accept="img/" id="carregar-imagem" style="display: none;">
+            <button id="botao-carregar">Carregar imagem</button>
+            <div class="container-nome-imagem">
+                <p>imagem_do_gato.png</p>
+                <img src="imagens/close.svg" width="12px">
+            </div>
+        </div>
+        <div class="container-informacoes">
+            <h2>Nova foto</h2>
+            <form>
+                <div>
+                    <label for="nome">Título da foto</label>
+                    <input type="text" name="nome" id="nome">
+                </div>
+                <div>
+                    <label for="descricao">Descrição</label>
+                    <textarea name="descricao" id="descricao"></textarea>
+                </div>
+                <div>
+                    <label for="tags">Hashtags</label>
+                    <input type="text" name="tags" id="tags">
+                </div>
+                <ul>
+                    <li>
+                        <p>Gato laranja</p>
+                        <img src="imagens/close-black.svg">
+                    </li>
+                </ul>
+                <div class="container-botoes">
+                    <button>Descartar</button>
+                    <button>Publicar</button>
+                </div>
+            </form>
+        </div>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
