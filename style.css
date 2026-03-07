@@ -87,7 +87,7 @@ main {
     border-radius: 8px;
 }
 
-#botao-carregar {
+#upload-btn {
     position: relative;
     width: 100%;
     background-color: transparent;
@@ -99,7 +99,7 @@ main {
     font-weight: 600;
 }
 
-#botao-carregar::after {
+#upload-btn::after {
     content: "";
     position: absolute;
     background-image: url('imagens/upload.svg');
