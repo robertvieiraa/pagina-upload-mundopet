@@ -56,3 +56,13 @@ listaTags.addEventListener('click', (evento) => {
         listaTags.removeChild(tagRemovida)
     }
 })
+
+let tagsDisponiveis = ['Tecnologia', 'HTML', 'CSS', 'JavaScript', 'Programação', 'Front-end']
+
+async function verificarTagsDisponiveis(tagTexto) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(tagsDisponiveis.includes(tagTexto))
+        }, 1000)
+    })
+}
