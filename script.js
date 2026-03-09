@@ -37,15 +37,22 @@ inputUpload.addEventListener('change', async (evento) => {
 let listaTags = document.getElementById('lista-tags')
 let inputTag = document.getElementById('categorias')
 
-document.addEventListener('keypress', (evento) => {
+inputTag.addEventListener('keypress', (evento) => {
     if (evento.key === 'Enter') {
         evento.preventDefault()
         let tagTexto = inputTag.value.trim()
         if (tagTexto !== '') { // validação
         let tagNova = document.createElement('li')
-        tagNova.innerHTML = `<p>${tagTexto}</p> <img src="imagens/close-black.svg">`
+        tagNova.innerHTML = `<p>${tagTexto}</p> <img src="imagens/close-black.svg" class="remove-tag">`
         listaTags.appendChild(tagNova)
         inputTag.value = ''
         }
+    }
+})
+
+listaTags.addEventListener('click', (evento) => {
+    if (evento.target.classList.contains('remove-tag')) {
+        let tagRemovida = evento.target.parentElement
+        listaTags.removeChild(tagRemovida)
     }
 })
