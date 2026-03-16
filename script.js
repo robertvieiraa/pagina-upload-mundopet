@@ -37,19 +37,6 @@ inputUpload.addEventListener('change', async (evento) => {
 let listaTags = document.getElementById('lista-tags')
 let inputTag = document.getElementById('categorias')
 
-inputTag.addEventListener('keypress', (evento) => {
-    if (evento.key === 'Enter') {
-        evento.preventDefault()
-        let tagTexto = inputTag.value.trim()
-        if (tagTexto !== '') { // validação
-        let tagNova = document.createElement('li')
-        tagNova.innerHTML = `<p>${tagTexto}</p> <img src="imagens/close-black.svg" class="remove-tag">`
-        listaTags.appendChild(tagNova)
-        inputTag.value = ''
-        }
-    }
-})
-
 listaTags.addEventListener('click', (evento) => {
     if (evento.target.classList.contains('remove-tag')) {
         let tagRemovida = evento.target.parentElement
@@ -64,5 +51,58 @@ async function verificarTagsDisponiveis(tagTexto) {
         setTimeout(() => {
             resolve(tagsDisponiveis.includes(tagTexto))
         }, 1000)
+    })
+}
+
+inputTag.addEventListener('keypress', async (evento) => {
+    if (evento.key === 'Enter') {
+        evento.preventDefault()
+        let tagTexto = inputTag.value.trim()
+        if (tagTexto !== '') {
+        try {
+            let tagExiste = await verificarTagsDisponiveis(tagTexto)
+            if (tagExiste) {
+                let tagNova = document.createElement('li')
+                tagNova.innerHTML = `<p>${tagTexto}</p> <img src="imagens/close-black.svg" class="remove-tag">`
+                listaTags.appendChild(tagNova)
+                inputTag.value = ''
+            } else {
+                alert('Essa tag não está disponível.')
+            }
+        } catch (error) {
+            console.error('Erro ao verificar a existência da tag.')
+        }
+        }
+    }
+})
+
+const botaoPublicar = document.querySelector('.botao-publicar')
+
+botaoPublicar.addEventListener('click', async (evento) => {
+    evento.preventDefault()
+    const tituloDaFoto = document.getElementById('nome').value
+    const descricaoDaFoto = document.getElementById('descricao').value
+    const tagsDaFoto = Array.from(listaTags.querySelectorAll('p')).map((tag) => tag.textContent)
+
+    try {
+        const mensagem = await publicarProjeto(tituloDaFoto, descricaoDaFoto, tagsDaFoto)
+        console.log(mensagem)
+        alert(mensagem)
+    } catch (error) {
+        console.error(error)
+        alert(error)
+    }
+})
+
+async function publicarProjeto(tituloDaFoto, descricaoDaFoto, tagsDaFoto) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const deuCerto = Math.random() > 0.5;
+            if (deuCerto) {
+                resolve('Projeto publicado com sucesso!')
+            } else {
+                reject('Erro ao publicar o projeto.')
+            }
+        }, 2000)
     })
 }
