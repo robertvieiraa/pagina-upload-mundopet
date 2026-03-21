@@ -78,6 +78,19 @@ inputTag.addEventListener('keypress', async (evento) => {
 
 const botaoPublicar = document.querySelector('.botao-publicar')
 
+async function publicarProjeto(tituloDaFoto, descricaoDaFoto, tagsDaFoto) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const deuCerto = Math.random() > 0.5;
+            if (deuCerto) {
+                resolve('Projeto publicado com sucesso!')
+            } else {
+                reject('Erro ao publicar o projeto.')
+            }
+        }, 2000)
+    })
+}
+
 botaoPublicar.addEventListener('click', async (evento) => {
     evento.preventDefault()
     const tituloDaFoto = document.getElementById('nome').value
@@ -94,15 +107,14 @@ botaoPublicar.addEventListener('click', async (evento) => {
     }
 })
 
-async function publicarProjeto(tituloDaFoto, descricaoDaFoto, tagsDaFoto) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            const deuCerto = Math.random() > 0.5;
-            if (deuCerto) {
-                resolve('Projeto publicado com sucesso!')
-            } else {
-                reject('Erro ao publicar o projeto.')
-            }
-        }, 2000)
-    })
-}
+let botaoDescartar = document.querySelector('.botao-descartar')
+
+botaoDescartar.addEventListener('click', (evento) => {
+    evento.preventDefault()
+
+    let formulario = document.querySelector('form')
+    formulario.reset()
+    listaTags.innerHTML = ''
+    imagemPrincipal.src = 'imagens/gato-laranja.jpg'
+    nomeDaImagem.textContent = 'imagem_do_gato.png'
+})
