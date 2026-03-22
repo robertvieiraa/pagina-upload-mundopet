@@ -97,13 +97,19 @@ botaoPublicar.addEventListener('click', async (evento) => {
     const descricaoDaFoto = document.getElementById('descricao').value
     const tagsDaFoto = Array.from(listaTags.querySelectorAll('p')).map((tag) => tag.textContent)
 
-    try {
+    if (!tituloDaFoto || !descricaoDaFoto) {
+        throw new Error('Preencha os campos de título e descrição para enviar o projeto!')
+    } else if (tagsDaFoto.length === 0) {
+        throw new Error('Adicione pelo menos uma tag para enviar o projeto!')
+    } else {
+        try {
         const mensagem = await publicarProjeto(tituloDaFoto, descricaoDaFoto, tagsDaFoto)
         console.log(mensagem)
         alert(mensagem)
     } catch (error) {
         console.error(error)
         alert(error)
+    }
     }
 })
 
